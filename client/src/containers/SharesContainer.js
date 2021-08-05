@@ -2,19 +2,22 @@ import React, {useEffect} from 'react';
 import TotalsPanel from '../components/TotalsPanel/TotalPanel';
 import SharesTable from '../components/SharesTable/SharesTable';
 import SharesCarousel from '../components/SharesCarousel/SharesCarousel';
-import ToggleAddForm from '..card/components/Edit/ToggleAddForm';
+// import ToggleAddForm from '../components/Edit/ToggleAddForm';
 import AddForm from '../components/Edit/AddForm';
-import ToggleDeleteForm from '../components/Edit/ToggleDeleteForm';
-import DeleteForm from '..component/components/Edit/DeleteForm';
+// import ToggleDeleteForm from '../components/Edit/ToggleDeleteForm';
+// import DeleteForm from '../components/Edit/DeleteForm';
 
 
 const SharesContainer = () => {
     
-    useEffect(() => {
-        // fetch(`https://www.alphavantage.co/query?function=function={}&apikey=${process.env.ALPHAVANTAGE_KEY}`)
-            .then(res => res.json())
-            .then(data => console.log(data))
-    }, []) 
+
+    const Search = (search_term) => {
+        useEffect(() => {
+            fetch(`https://ticker-2e1ica8b9.now.sh/keyword/${search_term}`)
+                .then(res => res.json())
+                .then(data => console.log(data))
+        }, []) 
+    }
 
 
     return(
@@ -22,6 +25,7 @@ const SharesContainer = () => {
             <TotalsPanel/>
             <SharesCarousel/>
             <SharesTable/>
+            <AddForm search={Search}/>
         </>
     )
 }

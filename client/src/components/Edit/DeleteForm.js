@@ -2,7 +2,7 @@ import React from 'react';
 
 const DeleteForm = () => {
 
-    return ();
+    return (<></>);
 }
 
 export default DeleteForm;
