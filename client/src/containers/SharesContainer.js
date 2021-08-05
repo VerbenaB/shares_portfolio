@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import TotalsPanel from '../components/TotalsPanel/TotalPanel';
 import SharesTable from '../components/SharesTable/SharesTable';
 import SharesCarousel from '../components/SharesCarousel/SharesCarousel';
@@ -9,6 +9,16 @@ import SharesCarousel from '../components/SharesCarousel/SharesCarousel';
 
 
 const SharesContainer = () => {
+    
+    useEffect(() => {
+        fetch(`https://www.alphavantage.co/query?function=TIME_SERIES_WEEKLY&symbol=IBM&apikey=${process.env.ALPHAVANTAGE_KEY}`)
+            .then(res => res.json())
+            .then(data => console.log(data["Weekly Time Series"]))
+    }, []) 
+
+    
+
+
     return(
         <>
         <TotalsPanel/>
