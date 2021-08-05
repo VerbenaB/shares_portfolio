@@ -11,19 +11,17 @@ import SharesCarousel from '../components/SharesCarousel/SharesCarousel';
 const SharesContainer = () => {
     
     useEffect(() => {
-        fetch(`https://www.alphavantage.co/query?function=TIME_SERIES_WEEKLY&symbol=IBM&apikey=${process.env.ALPHAVANTAGE_KEY}`)
+        // fetch(`https://www.alphavantage.co/query?function=function={}&apikey=${process.env.ALPHAVANTAGE_KEY}`)
             .then(res => res.json())
-            .then(data => console.log(data["Weekly Time Series"]))
+            .then(data => console.log(data))
     }, []) 
-
-    
 
 
     return(
         <>
-        <TotalsPanel/>
-        <SharesCarousel/>
-        <SharesTable/>
+            <TotalsPanel/>
+            <SharesCarousel/>
+            <SharesTable/>
         </>
     )
 }
