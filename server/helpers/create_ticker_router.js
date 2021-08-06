@@ -16,10 +16,13 @@ const createTickerRouter = function (collection) {
   //       });
   //   });
 
-  router.get("/:query", (req, res) => {
-    collection
-      .findOne({ name: req.params.query })
-      .then((docs) => res.json(docs))
+  router.get("/", (req, res) => {
+    // console.log(req.query.search_term)
+    const cursor = collection.find({ name: { $in: [req.query.search_term] } });
+    cursor.toArray().then((docs) => {
+      res.json(docs)
+    })
+
       .catch((err) => {
         console.error(err);
         res.status(500);
