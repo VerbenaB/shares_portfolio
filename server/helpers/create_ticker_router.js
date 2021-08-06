@@ -17,7 +17,6 @@ const createTickerRouter = function (collection) {
   //   });
 
   router.get("/", (req, res) => {
-    // console.log(req.query.search_term)
     const cursor = collection.find({ name: { $in: [req.query.search_term] } });
     cursor.toArray().then((docs) => {
       res.json(docs)
