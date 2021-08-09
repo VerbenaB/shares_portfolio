@@ -39,10 +39,15 @@ const SharesContainer = () => {
     postShare(shareObject);
   };
 
-  const findCurrentInfo = (shares) => {
-    let recent =  share[0]["Time Series (Daily)"].keys()[0]
-    return sharesInfo.map((share) => recent["4. close"])
+  const findCurrentInfo = () => {
+    let recents =  sharesInfo.map((share) => share[0]["Time Series (Daily)"].keys()[0])
+    recents.map((recent) => recent["4. close"])
     // console.log(shares[0]['Time Series (Daily)']) 
+  }
+  const findTickers = () => {
+    sharesInfo.map((share) => share["Meta Data"]["2. Symbol"])
+    
+    // shares.map((share) => share[0]["Meta Data"]["2. Symbol"])
   }
 
 
@@ -50,7 +55,7 @@ const SharesContainer = () => {
     <>
       <TotalsPanel />
       <SharesCarousel />
-      <SharesTable allInfo={sharesInfo} find={findCurrentInfo}/>
+      <SharesTable allInfo={sharesInfo} findClose={findCurrentInfo} findTickers={findTickers}/>
       <AddForm search={searchTicker} onShareSubmit={shareSubmit} />
     </>
   );
