@@ -5,6 +5,7 @@ import SharesCarousel from "../components/SharesCarousel/SharesCarousel";
 // import ToggleAddForm from '../components/Edit/ToggleAddForm';
 import AddForm from "../components/Edit/AddForm";
 import { getShares, getTickers, postShare } from "../components/ShareService";
+import Highcharts from ""
 // import ToggleDeleteForm from '../components/Edit/ToggleDeleteForm';
 // import DeleteForm from '../components/Edit/DeleteForm';
 
@@ -19,10 +20,6 @@ const SharesContainer = () => {
     })
     
       // getInfoFromAV(portfolioShares)
-    
-    
-    
-    
     
 
   }, []);
