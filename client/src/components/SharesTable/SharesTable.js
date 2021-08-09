@@ -12,9 +12,13 @@ const SharesTable = ({allInfo, findTickers, findClose}) => {
     } 
 
     const getArray = (share) => share["Time Series (Daily)"]
+    const getDate = allInfo.map((share) => [Object.keys(getArray(share))][0])
 
     console.log(allInfo.map((share) => share["Meta Data"]["2. Symbol"]))
-    console.log(allInfo.map((share) => [Object.keys(getArray(share))][0]))
+    for (let share of allInfo) {
+        console.log(share["Time Series (Daily)"][getDate])
+    }
+    
 
     return (
         <>
