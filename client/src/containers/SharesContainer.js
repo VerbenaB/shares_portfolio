@@ -12,7 +12,7 @@ import { getShares, getTickers, postShare } from "../components/ShareService";
 
 const SharesContainer = () => {
   // const [portfolioShares, setPortfolioShares] = useState([]);
-  const [sharesInfo, setSharesInfo] = useState([]);
+  const [sharesInfo, setSharesInfo] = useState(null);
 
   useEffect(() => {
     getShares().then((dbShares) => {
@@ -40,8 +40,9 @@ const SharesContainer = () => {
   };
 
   const findCurrentInfo = (shares) => {
-    
-    return shares.map((share) => share["Time Series (Daily)"][1])
+    let recent =  share[0]["Time Series (Daily)"].keys()[0]
+    return sharesInfo.map((share) => recent["4. close"])
+    // console.log(shares[0]['Time Series (Daily)']) 
   }
 
 
@@ -49,7 +50,7 @@ const SharesContainer = () => {
     <>
       <TotalsPanel />
       <SharesCarousel />
-      <SharesTable info={findCurrentInfo} shares={sharesInfo}/>
+      <SharesTable allInfo={sharesInfo} find={findCurrentInfo}/>
       <AddForm search={searchTicker} onShareSubmit={shareSubmit} />
     </>
   );
