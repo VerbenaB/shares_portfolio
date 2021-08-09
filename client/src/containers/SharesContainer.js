@@ -17,7 +17,6 @@ const SharesContainer = () => {
   useEffect(() => {
     getShares().then((dbShares) => {
       getInfoFromAV(dbShares);
-      findCurrentInfo();
     });
   }, []);
 
@@ -40,20 +39,17 @@ const SharesContainer = () => {
     postShare(shareObject);
   };
 
-  const date = moment().format("YYYY-MM-DD");
+  const findCurrentInfo = (shares) => {
+    
+    return shares.map((share) => share["Time Series (Daily)"][1])
+  }
 
-  const findCurrentInfo = () => {
-    let recentDay = sharesInfo.find((share) => {
-      return share["Time Series (Daily)"] === date;
-    });
-    return recentDay;
-  };
 
   return (
     <>
       <TotalsPanel />
       <SharesCarousel />
-      <SharesTable />
+      <SharesTable info={findCurrentInfo} shares={sharesInfo}/>
       <AddForm search={searchTicker} onShareSubmit={shareSubmit} />
     </>
   );
