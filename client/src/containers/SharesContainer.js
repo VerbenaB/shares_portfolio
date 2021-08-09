@@ -5,7 +5,6 @@ import SharesCarousel from "../components/SharesCarousel/SharesCarousel";
 // import ToggleAddForm from '../components/Edit/ToggleAddForm';
 import AddForm from "../components/Edit/AddForm";
 import { getShares, getTickers, postShare } from "../components/ShareService";
-import Highcharts from "highcharts";
 // import ToggleDeleteForm from '../components/Edit/ToggleDeleteForm';
 // import DeleteForm from '../components/Edit/DeleteForm';
 
@@ -25,23 +24,16 @@ const SharesContainer = () => {
   }, []);
 
   const getInfoFromAV = (shares) => {
-    
 
-    // if (shares.length > 1) {
     const fetches = shares.map((share) => {
       return fetch(
-        `https://www.alphavantage.co/query?function=TIME_SERIES_DAILY_ADJUSTED&symbol=${share.share.symbol}&apikey=${process.env.ALPHAVANTAGE_KEY}`
-      ).then((res) => res.json());
+        `https://www.alphavantage.co/query?function=TIME_SERIES_DAILY_ADJUSTED&symbol=${share.share.symbol}&outputsize=compact&apikey=${process.env.ALPHAVANTAGE_KEY}`
+      ).then((res) => res.splice(0, 31))
+        .then((res) => res.json())
     });
     Promise.all(fetches).then((results) => {
       setSharesInfo(results);
     });
-
-    // } else {
-    //   return fetch(
-    //     `https://www.alphavantage.co/query?function=TIME_SERIES_DAILY_ADJUSTED&symbol=${portfolioShares[0].share.symbol}&apikey=${process.env.ALPHAVANTAGE_KEY}`
-    //   ).then((res) => res.json());
-    // }
   };
 
   const searchTicker = (search_term, cb) => {
