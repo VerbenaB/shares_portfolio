@@ -14,23 +14,20 @@ const AddForm = ({ search, onShareSubmit, portfolioShares }) => {
     setNumberOfShares(e.target.value);
   };
 
-  // let displayError = () => {""};
-  
+  var displayError = "";
+
   const handleButtonClick = (e) => {
     e.preventDefault();
 
-    // if (portfolioShares.length() === 5) {
-    //   displayError = () => {
-    //     return "Sorry, you've reached your limit. If you wish to add another share, please delete one first";
-    //   };
+    // if (portfolioShares.length() >= 5) {
+    //   displayError =
+    //     "Sorry, you've reached your limit. If you wish to add another share, please delete one first";
     // } else {
-    //   displayError = () => {
-    //     return "Hello";
-    //   };
+    //   displayError = "Hello";
     // }
 
     onShareSubmit({
-      share: shareObject,
+      share: shareObject[0],
       num_of_shares: numberOfShares,
     });
 
@@ -60,10 +57,10 @@ const AddForm = ({ search, onShareSubmit, portfolioShares }) => {
           })}
         </datalist>
 
-        {/* <p>{displayError()}</p> */}
-
         <button>Add</button>
       </form>
+
+      {/* <p>{displayError}</p> */}
     </>
   );
 };

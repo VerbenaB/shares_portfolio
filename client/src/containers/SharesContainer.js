@@ -9,27 +9,20 @@ import { getShares, getTickers, postShare } from "../components/ShareService";
 // import DeleteForm from '../components/Edit/DeleteForm';
 
 const SharesContainer = () => {
-  const [portfolioShares, setPortfolioShares] = useState([]);
+  // const [portfolioShares, setPortfolioShares] = useState([]);
   const [sharesInfo, setSharesInfo] = useState([]);
 
   useEffect(() => {
-    getShares()
-    .then((dbShares) => {
-      setPortfolioShares(dbShares);
-    })
-    
-      // getInfoFromAV(portfolioShares)
-    
-
+    getShares().then((dbShares) => {
+      getInfoFromAV(dbShares);
+    });
   }, []);
 
   const getInfoFromAV = (shares) => {
-
     const fetches = shares.map((share) => {
       return fetch(
-        `https://www.alphavantage.co/query?function=TIME_SERIES_DAILY_ADJUSTED&symbol=${share.share.symbol}&outputsize=compact&apikey=${process.env.ALPHAVANTAGE_KEY}`
-      ).then((res) => res.splice(0, 31))
-        .then((res) => res.json())
+        `https://www.alphavantage.co/query?function=TIME_SERIES_DAILY_ADJUSTED&symbol=${share.share.symbol}&apikey=${process.env.ALPHAVANTAGE_KEY}`
+      ).then((res) => res.json());
     });
     Promise.all(fetches).then((results) => {
       setSharesInfo(results);
@@ -41,9 +34,7 @@ const SharesContainer = () => {
   };
 
   const shareSubmit = (shareObject) => {
-    postShare(shareObject).then(
-      setPortfolioShares([...portfolioShares, shareObject])
-    );
+    postShare(shareObject);
   };
 
   return (
