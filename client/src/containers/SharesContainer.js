@@ -27,6 +27,7 @@ const SharesContainer = () => {
       ).then((res) => res.json());
     });
     Promise.all(fetches).then((results) => {
+      
       setSharesInfo(results);
     });
   };
