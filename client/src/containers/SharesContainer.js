@@ -1,6 +1,4 @@
 import React, { useEffect, useState } from "react";
-import Moment from "react-moment";
-import moment from "moment";
 import TotalsPanel from "../components/TotalsPanel/TotalPanel";
 import SharesTable from "../components/SharesTable/SharesTable";
 import SharesCarousel from "../components/SharesCarousel/SharesCarousel";
@@ -12,12 +10,11 @@ import { getShares, getTickers, postShare } from "../components/ShareService";
 
 const SharesContainer = () => {
   // const [portfolioShares, setPortfolioShares] = useState([]);
-  const [sharesInfo, setSharesInfo] = useState([]);
+  const [sharesInfo, setSharesInfo] = useState(null);
 
   useEffect(() => {
     getShares().then((dbShares) => {
       getInfoFromAV(dbShares);
-      findCurrentInfo();
     });
   }, []);
 
@@ -28,6 +25,7 @@ const SharesContainer = () => {
       ).then((res) => res.json());
     });
     Promise.all(fetches).then((results) => {
+  
       setSharesInfo(results);
     });
   };
@@ -40,20 +38,22 @@ const SharesContainer = () => {
     postShare(shareObject);
   };
 
-  const date = moment().format("YYYY-MM-DD");
+  // const dateArray = Object.keys(sharesInfo[0]["Time Series (Daily)"])
 
-  const findCurrentInfo = () => {
-    let recentDay = sharesInfo.find((share) => {
-      return share["Time Series (Daily)"] === date;
-    });
-    return recentDay;
-  };
+  // const getValue = () => {
+  //   // return share.num_of_shares * share close value 
+  //   const data = sharesInfo.map((share, index) => {
+  //     console.log(sharesInfo[index]["Meta Data"]["2. Symbol"])
+  //     console.log(sharesInfo[index]["Time Series (Daily)"][dateArray[0]]["4. close"]) 
+  //   })    
+  // }
+
 
   return (
     <>
       <TotalsPanel />
       <SharesCarousel />
-      <SharesTable />
+      <SharesTable sharesInfo={sharesInfo}/>
       <AddForm search={searchTicker} onShareSubmit={shareSubmit} />
     </>
   );
