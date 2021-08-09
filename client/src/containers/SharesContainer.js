@@ -9,33 +9,42 @@ import { getShares, getTickers, postShare } from "../components/ShareService";
 // import DeleteForm from '../components/Edit/DeleteForm';
 
 const SharesContainer = () => {
-  // const [selectedShare, setSelectedShare] = useState({});
-  const [portfolioShares, setPortfolioShares] = useState({});
-  const [sharesInfo, setSharesInfo] = useState({});
+  const [portfolioShares, setPortfolioShares] = useState([]);
+  const [sharesInfo, setSharesInfo] = useState([]);
 
   useEffect(() => {
-    getShares().then((dbShares) => {
+    getShares()
+    .then((dbShares) => {
       setPortfolioShares(dbShares);
-      getInfoFromAV(portfolioShares);
-    });
+    })
+    
+      // getInfoFromAV(portfolioShares)
+    
+    
+    
+    
+    
+
   }, []);
 
   const getInfoFromAV = (shares) => {
-    if (shares.length > 1) {
-      const fetches = shares.map((share) => {
-        return fetch(
-          `https://www.alphavantage.co/query?function=TIME_SERIES_DAILY_ADJUSTED&symbol=${share.share.symbol}&apikey=${process.env.ALPHAVANTAGE_KEY}`
-        ).then((res) => res.json());
-      });
-      Promise.all(fetches)
-        .then((results) => {
-          setSharesInfo(results)
-        })
-    } else {
-      return fetch(`https://www.alphavantage.co/query?function=TIME_SERIES_DAILY_ADJUSTED&symbol=${portfolioShares[0].share.symbol}&apikey=${process.env.ALPHAVANTAGE_KEY})
-    }
     
-    
+
+    // if (shares.length > 1) {
+    const fetches = shares.map((share) => {
+      return fetch(
+        `https://www.alphavantage.co/query?function=TIME_SERIES_DAILY_ADJUSTED&symbol=${share.share.symbol}&apikey=${process.env.ALPHAVANTAGE_KEY}`
+      ).then((res) => res.json());
+    });
+    Promise.all(fetches).then((results) => {
+      setSharesInfo(results);
+    });
+
+    // } else {
+    //   return fetch(
+    //     `https://www.alphavantage.co/query?function=TIME_SERIES_DAILY_ADJUSTED&symbol=${portfolioShares[0].share.symbol}&apikey=${process.env.ALPHAVANTAGE_KEY}`
+    //   ).then((res) => res.json());
+    // }
   };
 
   const searchTicker = (search_term, cb) => {

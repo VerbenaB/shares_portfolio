@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-const AddForm = ({ search, onShareSubmit }) => {
+const AddForm = ({ search, onShareSubmit, portfolioShares }) => {
   const [shareObject, setShareObject] = useState("");
   const [numberOfShares, setNumberOfShares] = useState("");
 
@@ -14,9 +14,21 @@ const AddForm = ({ search, onShareSubmit }) => {
     setNumberOfShares(e.target.value);
   };
 
+  // let displayError = () => {""};
+  
   const handleButtonClick = (e) => {
     e.preventDefault();
-    
+
+    // if (portfolioShares.length() === 5) {
+    //   displayError = () => {
+    //     return "Sorry, you've reached your limit. If you wish to add another share, please delete one first";
+    //   };
+    // } else {
+    //   displayError = () => {
+    //     return "Hello";
+    //   };
+    // }
+
     onShareSubmit({
       share: shareObject,
       num_of_shares: numberOfShares,
@@ -47,6 +59,8 @@ const AddForm = ({ search, onShareSubmit }) => {
             return <option key={number} value={number} />;
           })}
         </datalist>
+
+        {/* <p>{displayError()}</p> */}
 
         <button>Add</button>
       </form>
