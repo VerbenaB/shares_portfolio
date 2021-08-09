@@ -1,4 +1,6 @@
 import React, { useEffect, useState } from "react";
+import Moment from "react-moment";
+import moment from "moment";
 import TotalsPanel from "../components/TotalsPanel/TotalPanel";
 import SharesTable from "../components/SharesTable/SharesTable";
 import SharesCarousel from "../components/SharesCarousel/SharesCarousel";
@@ -37,12 +39,21 @@ const SharesContainer = () => {
     postShare(shareObject);
   };
 
+  const date = moment().format("YYYY-MM-DD");
+
+  const findCurrentInfo = () => {
+    let recentDay = sharesInfo.find((share) => {return share["Time Series (Daily)"] === date}
+    );
+    return recentDay;
+  };
+
   return (
     <>
       <TotalsPanel />
       <SharesCarousel />
       <SharesTable />
       <AddForm search={searchTicker} onShareSubmit={shareSubmit} />
+      {findCurrentInfo()}
     </>
   );
 };
