@@ -9,21 +9,21 @@ import { getShares, getTickers } from "../components/ShareService";
 // import DeleteForm from '../components/Edit/DeleteForm';
 
 const SharesContainer = () => {
-  const [allShares, setAllShares] = useState({});
-  const [userShares, setUserShares] = useState({});
+  const [selectedShare, setSelectedShare] = useState({});
+  const [portfolioShares, setPortfolioShares] = useState({});
 
   useEffect(() => {
     getShares().then((dbShares) => {
-      setUserShares(dbShares);
+      setPortfolioShares(dbShares);
     });
   }, []);
 
   const searchTicker = (search_term) => {
-      getTickers(search_term)
-        .then((res) => setUserShares(res))
-        // .then((data) => console.log(data));
-      // set user shares [... seaerchresult]
-    };
+    getTickers(search_term).then((res) => setSelectedShare(res));
+    // .then((data) => console.log(data));
+    // set user shares [... seaerchresult]
+  };
+
 
 
   return (
