@@ -4,7 +4,7 @@ import SharesTable from "../components/SharesTable/SharesTable";
 import SharesCarousel from "../components/SharesCarousel/SharesCarousel";
 // import ToggleAddForm from '../components/Edit/ToggleAddForm';
 import AddForm from "../components/Edit/AddForm";
-import { getShares, getTickers } from "../components/ShareService";
+import { getShares, getTickers, postShare } from "../components/ShareService";
 // import ToggleDeleteForm from '../components/Edit/ToggleDeleteForm';
 // import DeleteForm from '../components/Edit/DeleteForm';
 
@@ -24,14 +24,16 @@ const SharesContainer = () => {
     // set user shares [... seaerchresult]
   };
 
-
+  const shareSubmit = (shareObject) => {
+    postShare(shareObject);
+  };
 
   return (
     <>
       <TotalsPanel />
       <SharesCarousel />
       <SharesTable />
-      <AddForm search={searchTicker} />
+      <AddForm search={searchTicker} onShareSubmit={shareSubmit} />
     </>
   );
 };
