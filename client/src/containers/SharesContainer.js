@@ -18,14 +18,14 @@ const SharesContainer = () => {
     });
   }, []);
 
-  const searchTicker = (search_term) => {
-    getTickers(search_term).then((res) => setSelectedShare(res));
-    // .then((data) => console.log(data));
-    // set user shares [... seaerchresult]
+  const searchTicker = (search_term, cb) => {
+    getTickers(search_term).then((res) => cb(res));
+    
   };
 
   const shareSubmit = (shareObject) => {
-    postShare(shareObject);
+    postShare(shareObject)
+      .then(setPortfolioShares([...portfolioShares, shareObject]));
   };
 
   return (

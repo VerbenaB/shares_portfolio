@@ -18,9 +18,11 @@ const createTickerRouter = function (collection) {
 
   router.get("/", (req, res) => {
     const cursor = collection.find({ name: { $in: [req.query.search_term] } });
-    cursor.toArray().then((docs) => {
-      res.json(docs)
-    })
+    cursor
+      .toArray()
+      .then((docs) => {
+        res.json(docs);
+      })
 
       .catch((err) => {
         console.error(err);

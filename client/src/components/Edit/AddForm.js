@@ -1,15 +1,13 @@
 import React, { useState } from "react";
 
 const AddForm = ({ search, onShareSubmit }) => {
-  const [shareName, setShareName] = useState("");
+  const [shareObject, setShareObject] = useState("");
   const [numberOfShares, setNumberOfShares] = useState("");
 
   const handleShareChange = (e) => {
-    setShareName(e.target.value);
-    search(shareName);
-
-    // postShare (from ShareServices) this will send to db
-    // .then() => {addShare(whatever is selected)} (from SharesContainer) setUserShares([... userShares, share])
+    search(e.target.value, (shareObj) => {
+      setShareObject(shareObj);
+    });
   };
 
   const handleNumberChange = (e) => {
@@ -17,13 +15,14 @@ const AddForm = ({ search, onShareSubmit }) => {
   };
 
   const handleButtonClick = (e) => {
+    e.preventDefault();
     
     onShareSubmit({
-      name: shareName,
+      share: shareObject,
       num_of_shares: numberOfShares,
     });
 
-    setShareName("");
+    setShareObject("");
     setNumberOfShares("");
   };
 
@@ -33,7 +32,7 @@ const AddForm = ({ search, onShareSubmit }) => {
   return (
     <>
       <h2>Add shares to your portfolio</h2>
-      <form>
+      <form onSubmit={handleButtonClick}>
         <input type="text" placeholder="search" onChange={handleShareChange} />
 
         <label htmlFor="numbers">Number of shares</label>
@@ -49,7 +48,7 @@ const AddForm = ({ search, onShareSubmit }) => {
           })}
         </datalist>
 
-        <button onClick={handleButtonClick}>Add</button>
+        <button>Add</button>
       </form>
     </>
   );
