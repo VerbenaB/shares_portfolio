@@ -5,16 +5,26 @@ import moment from "moment";
 
 
 const SharesTable = ({allInfo, findTickers, findClose}) => {
-    
-    // console.log("yes", allInfo) 
 
     if (!allInfo) {
         return null
     } 
 
+    const getSymbol = (share) => {
+        return null
+    }
+
+    const getValue = (share) => {
+        // return share.num_of_shares * share close value 
+        return null
+    }
+
     const dateArray = Object.keys(allInfo[0]["Time Series (Daily)"])
-    
+   
+    console.log(allInfo) 
     console.log(dateArray[0])
+
+    
 
     // const getArray = (share) => share["Time Series (Daily)"]
     // const getDate = allInfo.map((share) => [Object.keys(getArray(share))][0])
@@ -24,16 +34,31 @@ const SharesTable = ({allInfo, findTickers, findClose}) => {
     //     console.log(share["Time Series (Daily)"][getDate])
     // }
     
-    // const shareNodes = allInfo.map()
+   
     
 
     return (
         <>
-        {/* <p>{findClose}</p>
-        <p>{allInfo[0]["Meta Data"]["2. Symbol"]}</p> 
-        <p>{findTickers}</p> */}
+        <table>
+            <thead>
+                <tr>
+                    <th>Symbol</th>
+                    <th>Current value</th>
+                </tr>
+            </thead>
+            <tbody>
+                {allInfo.map((share) => {
+                    <tr>
+                        <td>{getSymbol(share)}</td>
+                        <td>{getValue(share)}</td>
+                    </tr>
+                })}
+            </tbody>
+        </table>
+        
         <ShareRow/>
         </>
+        
     )
 
 }
