@@ -1,4 +1,5 @@
 import React from "react";
+import "./SharesTable.css";
 
 const SharesTable = ({ allInfo }) => {
   if (!allInfo || !allInfo[0]["Meta Data"]) {
@@ -23,7 +24,7 @@ const SharesTable = ({ allInfo }) => {
   };
 
   return (
-    <>
+    <div className="shares-table">
       <table>
         <thead>
           <tr>
@@ -34,7 +35,7 @@ const SharesTable = ({ allInfo }) => {
         </thead>
         <tbody>{populateTable()}</tbody>
       </table>
-    </>
+    </div>
   );
 };
 

@@ -10,7 +10,7 @@ const SharesList = ({ allInfo }) => {
     return <ShareCard key={index} share={share} index={index} />;
   });
 
-  return <>{shareNodes}</>;
+  return <div className="share-list">{shareNodes}</div>;
 };
 
 export default SharesList;

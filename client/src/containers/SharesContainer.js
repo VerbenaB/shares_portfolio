@@ -6,6 +6,7 @@ import SharesList from "../components/SharesCarousel/SharesList";
 import AddForm from "../components/Edit/AddForm";
 import { getShares, getTickers, postShare } from "../components/ShareService";
 import "./SharesContainer.css";
+import Grid from "@material-ui/core/Grid";
 // import ToggleDeleteForm from '../components/Edit/ToggleDeleteForm';
 // import DeleteForm from '../components/Edit/DeleteForm';
 
@@ -45,11 +46,22 @@ const SharesContainer = () => {
 
   return (
     <div className="main">
-      <div className="dashboard">
-        <TotalsPanel allInfo={sharesInfo} />
-        <SharesList allInfo={sharesInfo} />
-        <SharesTable allInfo={sharesInfo} />
-      </div>
+      
+        <div className="dashboard">
+          <Grid container spacing={2}>
+            <Grid item xs={6} sm={6}>
+              <TotalsPanel allInfo={sharesInfo} />
+            </Grid>
+            <Grid item xs={6}>
+              <SharesTable allInfo={sharesInfo} />
+            </Grid>
+            <Grid item xs={12}>
+              <SharesList allInfo={sharesInfo} />
+            </Grid>
+          </Grid>
+        </div>
+      
+
       <AddForm search={searchTicker} onShareSubmit={shareSubmit} />
     </div>
   );
