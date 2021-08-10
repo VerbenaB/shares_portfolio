@@ -26,7 +26,7 @@ const SharesContainer = () => {
     Promise.all(fetches).then((results) => {
       const sharesWithNumOfShares = results.map((avShare, i) => {
         avShare.num_of_shares = shares[i].num_of_shares;
-        avShare.name = shares[i].name;
+        avShare.name = shares[i]["share"]["name"];
         return avShare;
       });
       console.log(sharesWithNumOfShares);

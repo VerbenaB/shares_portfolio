@@ -1,8 +1,8 @@
-const ShareCard = ({ allInfo }) => {
+const ShareCard = ({ allInfo, index }) => {
   const dateArray = Object.keys(allInfo[0]["Time Series (Daily)"]);
 
   const populateTable = () => {
-    return allInfo.map((share, index) => {
+    
       return (
         <tr key={index}>
           <td>{allInfo[index]["name"]}</td>
@@ -12,8 +12,8 @@ const ShareCard = ({ allInfo }) => {
               allInfo[index]["num_of_shares"]}
           </td>
         </tr>
-      )
-    });
+      );
+    
   };
 
   return (
