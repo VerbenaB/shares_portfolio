@@ -1,52 +1,53 @@
-import React from 'react';
-import ShareRow from './ShareRow';
+import React from "react";
 
-const SharesTable = ({sharesInfo}) => {
-    
-    if (!allInfo) {
-        return null
-    } 
+const SharesTable = ({ allInfo }) => {
+  if (!allInfo || !allInfo[0]["Meta Data"]) {
+    return null;
+  }
 
-    // const getSymbol = (share) => {
-    //     return share["Meta Data"]["2. Symbol"]
-    //     return null
-    // }
+  // const getSymbol = (share) => {
+  //     return share["Meta Data"]["2. Symbol"]
+  //     return null
+  // }
 
-    const dateArray = Object.keys(allInfo[0]["Time Series (Daily)"])
+  const dateArray = Object.keys(allInfo[0]["Time Series (Daily)"]);
 
-    const getValue = () => {
-        // return share.num_of_shares * share close value 
-        const data = allInfo.map((share, index) => {
-            console.log(allInfo[index]["Meta Data"]["2. Symbol"])
-            console.log(allInfo[index]["Time Series (Daily)"][dateArray[0]]["4. close"]) 
-        })    
-    }
+  const getValue = () => {
+    // return share.num_of_shares * share close value
+    return allInfo.map((share, index) => {
+      console.log(allInfo[index]["Meta Data"]["2. Symbol"]);
 
+      return (
+        <tr key={index}>
+          <td>{allInfo[index]["Meta Data"]["2. Symbol"]}</td>
+          <td>
+            {allInfo[index]["Time Series (Daily)"][dateArray[0]]["4. close"]}
+          </td>
+        </tr>
+      );
+    });
+  };
 
-    return (
-        <>
-        <table>
-            <thead>
-                <tr>
-                    <th>Symbol</th>
-                    <th>Current value</th>
-                </tr>
-            </thead>
-            <tbody>
-                {allInfo.forEach((share) => {
-                    <tr>
-                        {/* <td>{getSymbol()}</td> */}
-                        <td>{getValue()}</td>
-                    </tr>
-                })} 
-            </tbody>
-        </table>
-        
-        <ShareRow/>
-        </>
-        
-    )
+  //   console.log(allInfo[0]["Meta Data"]["2. Symbol"]);
+  //   console.log(allInfo[0]["Time Series (Daily)"][dateArray[0]]["4. close"]);
 
-}
+  return (
+    <>
+      <table>
+        <thead>
+          <tr>
+            <th>Symbol</th>
+            <th>Current value</th>
+          </tr>
+        </thead>
+        <tbody>
+          
+            {getValue()}
+          
+        </tbody>
+      </table>
+    </>
+  );
+};
 
 export default SharesTable;

@@ -11,6 +11,7 @@ import { getShares, getTickers, postShare } from "../components/ShareService";
 const SharesContainer = () => {
   // const [portfolioShares, setPortfolioShares] = useState([]);
   const [sharesInfo, setSharesInfo] = useState(null);
+  const [numOfShares, setNumOfShares] = useState("");
 
   useEffect(() => {
     getShares().then((dbShares) => {
@@ -25,8 +26,14 @@ const SharesContainer = () => {
       ).then((res) => res.json());
     });
     Promise.all(fetches).then((results) => {
-  
-      setSharesInfo(results);
+      //
+      // console.log(results);
+      const sharesWithNumOfShares = results.map((avShare, i) => {
+        avShare.num_of_shares = shares[i].num_of_shares;
+        return avShare;
+      });
+      console.log(sharesWithNumOfShares);
+      setSharesInfo(sharesWithNumOfShares);
     });
   };
 
@@ -38,22 +45,23 @@ const SharesContainer = () => {
     postShare(shareObject);
   };
 
-  // const dateArray = Object.keys(sharesInfo[0]["Time Series (Daily)"])
+  // const dateArray = Object.keys(sharesInfo[0]["Time Series (Daily)"]);
 
   // const getValue = () => {
-  //   // return share.num_of_shares * share close value 
+  //   // return share.num_of_shares * share close value
   //   const data = sharesInfo.map((share, index) => {
-  //     console.log(sharesInfo[index]["Meta Data"]["2. Symbol"])
-  //     console.log(sharesInfo[index]["Time Series (Daily)"][dateArray[0]]["4. close"]) 
-  //   })    
-  // }
-
+  //     console.log(sharesInfo[index]["Meta Data"]["2. Symbol"]);
+  //     console.log(
+  //       sharesInfo[index]["Time Series (Daily)"][dateArray[0]]["4. close"]
+  //     );
+  //   });
+  // };
 
   return (
     <>
       <TotalsPanel />
       <SharesCarousel />
-      <SharesTable sharesInfo={sharesInfo}/>
+      <SharesTable allInfo={sharesInfo} />
       <AddForm search={searchTicker} onShareSubmit={shareSubmit} />
     </>
   );
