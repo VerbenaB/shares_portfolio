@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import {TextField, Button} from "@material-ui/core"
+import {TextField, Button, FormGroup} from "@material-ui/core"
 
 const AddForm = ({ search, onShareSubmit, portfolioShares }) => {
   const [shareObject, setShareObject] = useState("");
@@ -40,7 +40,7 @@ const AddForm = ({ search, onShareSubmit, portfolioShares }) => {
   return (
     <>
       <h2>Add a Share</h2>
-      <form onSubmit={handleButtonClick}>
+      <form onSubmit={handleButtonClick} className="form">
         <TextField type="text" label="search" onChange={handleShareChange} />
 
         <TextField
