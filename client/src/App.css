@@ -1,5 +1,9 @@
-.App {
+body {
   text-align: center;
+  background-color: #FF847C;
+  font-family: 'Roboto', sans-serif;
 }
+
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
 
 

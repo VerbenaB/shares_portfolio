@@ -1,10 +1,10 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import { createTheme, ThemeProvider } from '@material-ui/core/styles';
-
 import HomeContainer from "./containers/HomeContainer";
 import SharesContainer from "./containers/SharesContainer";
 import NavBar from "./components/NavBar/NavBar";
+import "./App.css";
 
 const App = () => {
   
@@ -19,10 +19,7 @@ const App = () => {
     } 
   })
   
-  
   return (
-    
-    
     <Router>
       <ThemeProvider theme={theme}>
         <NavBar/>

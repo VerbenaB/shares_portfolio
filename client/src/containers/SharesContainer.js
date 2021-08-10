@@ -5,6 +5,7 @@ import SharesList from "../components/SharesCarousel/SharesList";
 // import ToggleAddForm from '../components/Edit/ToggleAddForm';
 import AddForm from "../components/Edit/AddForm";
 import { getShares, getTickers, postShare } from "../components/ShareService";
+import "./SharesContainer.css";
 // import ToggleDeleteForm from '../components/Edit/ToggleDeleteForm';
 // import DeleteForm from '../components/Edit/DeleteForm';
 
@@ -43,12 +44,14 @@ const SharesContainer = () => {
   };
 
   return (
-    <>
-      <TotalsPanel allInfo={sharesInfo} />
-      <SharesList allInfo={sharesInfo} />
-      <SharesTable allInfo={sharesInfo} />
+    <div className="main">
+      <div className="dashboard">
+        <TotalsPanel allInfo={sharesInfo} />
+        <SharesList allInfo={sharesInfo} />
+        <SharesTable allInfo={sharesInfo} />
+      </div>
       <AddForm search={searchTicker} onShareSubmit={shareSubmit} />
-    </>
+    </div>
   );
 };
 
