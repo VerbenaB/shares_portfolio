@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import TotalsPanel from "../components/TotalsPanel/TotalPanel";
 import SharesTable from "../components/SharesTable/SharesTable";
-import SharesCarousel from "../components/SharesCarousel/SharesCarousel";
+import SharesList from "../components/SharesCarousel/SharesList";
 // import ToggleAddForm from '../components/Edit/ToggleAddForm';
 import AddForm from "../components/Edit/AddForm";
 import { getShares, getTickers, postShare } from "../components/ShareService";
@@ -9,7 +9,6 @@ import { getShares, getTickers, postShare } from "../components/ShareService";
 // import DeleteForm from '../components/Edit/DeleteForm';
 
 const SharesContainer = () => {
-  // const [portfolioShares, setPortfolioShares] = useState([]);
   const [sharesInfo, setSharesInfo] = useState(null);
 
   useEffect(() => {
@@ -25,8 +24,13 @@ const SharesContainer = () => {
       ).then((res) => res.json());
     });
     Promise.all(fetches).then((results) => {
-  
-      setSharesInfo(results);
+      const sharesWithNumOfShares = results.map((avShare, i) => {
+        avShare.num_of_shares = shares[i].num_of_shares;
+        avShare.name = shares[i]["share"]["name"];
+        return avShare;
+      });
+      console.log(sharesWithNumOfShares);
+      setSharesInfo(sharesWithNumOfShares);
     });
   };
 
@@ -38,22 +42,11 @@ const SharesContainer = () => {
     postShare(shareObject);
   };
 
-  // const dateArray = Object.keys(sharesInfo[0]["Time Series (Daily)"])
-
-  // const getValue = () => {
-  //   // return share.num_of_shares * share close value 
-  //   const data = sharesInfo.map((share, index) => {
-  //     console.log(sharesInfo[index]["Meta Data"]["2. Symbol"])
-  //     console.log(sharesInfo[index]["Time Series (Daily)"][dateArray[0]]["4. close"]) 
-  //   })    
-  // }
-
-
   return (
     <>
-      <TotalsPanel />
-      <SharesCarousel />
-      <SharesTable sharesInfo={sharesInfo}/>
+      <TotalsPanel allInfo={sharesInfo} />
+      <SharesList allInfo={sharesInfo} />
+      <SharesTable allInfo={sharesInfo} />
       <AddForm search={searchTicker} onShareSubmit={shareSubmit} />
     </>
   );
