@@ -1,33 +1,27 @@
-const ShareCard = ({ allInfo, index }) => {
-  const dateArray = Object.keys(allInfo[0]["Time Series (Daily)"]);
-  const thirtyDays = dateArray.splice(0, 30);
+const ShareCard = ({ share }) => {
+  const dateArray = Object.keys(share["Time Series (Daily)"]);
+  const copy = [...dateArray];
 
-  const turnBackwards = (arr) => {
-    let infoArray = [];
-    for (let i = arr.length - 1; i >= 0; i--) {
-      infoArray.push(arr[i]);
-    }
-    return infoArray;
-  };
-
-  const datePoints = turnBackwards(thirtyDays);
+  const reversed = copy.reverse();
+  reversed.splice(0, 30);
 
   const getDataForPoints = () => {
-    return datePoints.map((point, i) => {
-        return allInfo[index]["Time Series (Daily)"][dateArray[i]]["4. close"]
+    return reversed.map((point, i) => {
+      return `${share["Time Series (Daily)"][reversed[i]]["4. close"]} , `;
     });
   };
 
   const populateTable = () => {
     return (
       <>
-        <tr key={index}>
-          <td>{allInfo[index]["name"]}</td>
+        <tr key={share["name"]}>
+          <td>{share["name"]}</td>
           {/* <td>{allInfo[index]["Meta Data"]["2. Symbol"]}</td> */}
           <td>
-            {allInfo[index]["Time Series (Daily)"][dateArray[0]]["4. close"] *
-              allInfo[index]["num_of_shares"]}
+            {share["Time Series (Daily)"][dateArray[0]]["4. close"] *
+              share["num_of_shares"]}
           </td>
+          {/* <td>{allInfo[index]["Time Series (Daily)"]["08-09-2021"]}</td> */}
         </tr>
         <tr>
           <td>Highcharts chart</td>

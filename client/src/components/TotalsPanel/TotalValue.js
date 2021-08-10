@@ -7,12 +7,16 @@ const TotalValue = ({ allInfo }) => {
 
   const calculateTotal = () => {
     let totalValue = 0;
-    allInfo.map((share, index) => {
-      return (totalValue +=
+    allInfo.forEach((share, index) => {
+      totalValue +=
         allInfo[index]["Time Series (Daily)"][dateArray[0]]["4. close"] *
-        allInfo[index]["num_of_shares"]);
+        allInfo[index]["num_of_shares"];
     });
-    return <>totalValue</>;
+    return (
+      <tr>
+        <td>{totalValue}</td>
+      </tr>
+    );
   };
 
   return (
