@@ -7,7 +7,7 @@ const SharesList = ({ allInfo }) => {
   }
 
   const shareNodes = allInfo.map((share, index) => {
-    return <ShareCard allInfo={allInfo} index={index}/>
+    return <ShareCard key={index} allInfo={allInfo} index={index}/>
   });
 
   return <>{shareNodes}</>;

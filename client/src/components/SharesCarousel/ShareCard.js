@@ -1,9 +1,26 @@
 const ShareCard = ({ allInfo, index }) => {
   const dateArray = Object.keys(allInfo[0]["Time Series (Daily)"]);
+  const thirtyDays = dateArray.splice(0, 30);
+
+  const turnBackwards = (arr) => {
+    let infoArray = [];
+    for (let i = arr.length - 1; i >= 0; i--) {
+      infoArray.push(arr[i]);
+    }
+    return infoArray;
+  };
+
+  const datePoints = turnBackwards(thirtyDays);
+
+  const getDataForPoints = () => {
+    return datePoints.map((point, i) => {
+        return allInfo[index]["Time Series (Daily)"][dateArray[i]]["4. close"]
+    });
+  };
 
   const populateTable = () => {
-    
-      return (
+    return (
+      <>
         <tr key={index}>
           <td>{allInfo[index]["name"]}</td>
           {/* <td>{allInfo[index]["Meta Data"]["2. Symbol"]}</td> */}
@@ -12,8 +29,12 @@ const ShareCard = ({ allInfo, index }) => {
               allInfo[index]["num_of_shares"]}
           </td>
         </tr>
-      );
-    
+        <tr>
+          <td>Highcharts chart</td>
+          <td>{getDataForPoints()}</td>
+        </tr>
+      </>
+    );
   };
 
   return (

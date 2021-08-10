@@ -1,7 +1,7 @@
 import Highcharts from "highcharts";
 
-const TotalTrends = () => {
-    return ("I am total trends")
-}
+const TotalTrends = ({ allInfo }) => {
+  return <></>;
+};
 
 export default TotalTrends;

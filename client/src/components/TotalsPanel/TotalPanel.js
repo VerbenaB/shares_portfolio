@@ -6,7 +6,7 @@ import TotalValue from "./TotalValue";
 const TotalPanel = ({ allInfo}) => {
   return (
     <>
-      <TotalTrends />
+      <TotalTrends allInfo={allInfo}/>
       <TotalValue allInfo={allInfo} />
     </>
   );
