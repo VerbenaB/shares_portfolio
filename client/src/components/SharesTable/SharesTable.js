@@ -9,9 +9,9 @@ const SharesTable = ({ allInfo }) => {
 
   const populateTable = () => {
     return allInfo.map((share, index) => {
-      
-        return (
+      return (
         <tr key={index}>
+            <td>{allInfo[index]["name"]}</td>
           <td>{allInfo[index]["Meta Data"]["2. Symbol"]}</td>
           <td>
             {allInfo[index]["Time Series (Daily)"][dateArray[0]]["4. close"] *
@@ -27,6 +27,7 @@ const SharesTable = ({ allInfo }) => {
       <table>
         <thead>
           <tr>
+            <th>Name</th>
             <th>Symbol</th>
             <th>Current value</th>
           </tr>
