@@ -1,5 +1,6 @@
 import React from "react";
 import "./SharesTable.css";
+import { TableCell, TableRow, TableBody, TableHead } from "@material-ui/core";
 
 const SharesTable = ({ allInfo }) => {
   if (!allInfo || !allInfo[0]["Meta Data"]) {
@@ -11,31 +12,43 @@ const SharesTable = ({ allInfo }) => {
   const populateTable = () => {
     return allInfo.map((share, index) => {
       return (
-        <tr key={index}>
-          <td className="share-td">{allInfo[index]["name"]}</td>
-          <td className="share-td">{allInfo[index]["Meta Data"]["2. Symbol"]}</td>
-          <td className="share-td">
+        <TableRow key={index}>
+          <TableCell className="share-td">{allInfo[index]["name"]}</TableCell>
+          <TableCell className="share-td">{allInfo[index]["Meta Data"]["2. Symbol"]}</TableCell>
+          <TableCell className="share-td">
             {allInfo[index]["Time Series (Daily)"][dateArray[0]]["4. close"] *
               allInfo[index]["num_of_shares"]}
-          </td>
-        </tr>
+          </TableCell>
+        </TableRow>
       );
     });
   };
 
   return (
-    <div className="shares-table">
-      <table className="table">
-        <thead>
-          <tr>
-            <th>Name</th>
-            <th>Symbol</th>
-            <th>Current value</th>
-          </tr>
-        </thead>
-        <tbody>{populateTable()}</tbody>
-      </table>
-    </div>
+   <>
+    <TableHead>
+      <TableRow>
+        <TableCell>Name</TableCell>
+        <TableCell align="left">Sybmol</TableCell>
+        <TableCell align="right">Current Value</TableCell>
+      </TableRow>
+    </TableHead>
+    <TableBody>
+      {populateTable()}
+    </TableBody>
+   </>
+  //  <div className="shares-table">
+  //     <table className="table">
+  //       <thead>
+  //         <tr>
+  //           <th>Name</th>
+  //           <th>Symbol</th>
+  //           <th>Current value</th>
+  //         </tr>
+  //       </thead>
+  //       <tbody>{populateTable()}</tbody>
+  //     </table>
+  //   </div>
   );
 };
 
