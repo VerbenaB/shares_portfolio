@@ -21,7 +21,6 @@ const ShareCard = ({ share }) => {
             {share["Time Series (Daily)"][dateArray[0]]["4. close"] *
               share["num_of_shares"]}
           </td>
-          {/* <td>{allInfo[index]["Time Series (Daily)"]["08-09-2021"]}</td> */}
         </tr>
         <tr>
           <td>Highcharts chart</td>
