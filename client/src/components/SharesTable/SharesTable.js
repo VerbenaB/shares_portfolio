@@ -29,7 +29,7 @@ const SharesTable = ({ allInfo }) => {
     <TableHead>
       <TableRow>
         <TableCell>Name</TableCell>
-        <TableCell align="left">Sybmol</TableCell>
+        <TableCell align="left">Symbol</TableCell>
         <TableCell align="right">Current Value</TableCell>
       </TableRow>
     </TableHead>
@@ -37,18 +37,6 @@ const SharesTable = ({ allInfo }) => {
       {populateTable()}
     </TableBody>
    </>
-  //  <div className="shares-table">
-  //     <table className="table">
-  //       <thead>
-  //         <tr>
-  //           <th>Name</th>
-  //           <th>Symbol</th>
-  //           <th>Current value</th>
-  //         </tr>
-  //       </thead>
-  //       <tbody>{populateTable()}</tbody>
-  //     </table>
-  //   </div>
   );
 };
 

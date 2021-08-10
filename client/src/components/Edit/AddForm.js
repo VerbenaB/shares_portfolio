@@ -41,7 +41,7 @@ const AddForm = ({ search, onShareSubmit, portfolioShares }) => {
     <>
       <h2>New Share</h2>
       <form onSubmit={handleButtonClick} className="form">
-        <TextField type="text" label="search" onChange={handleShareChange} />
+        <TextField type="text" label="Name" onChange={handleShareChange} />
 
         <TextField
           

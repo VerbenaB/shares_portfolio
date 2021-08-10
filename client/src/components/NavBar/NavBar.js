@@ -17,7 +17,7 @@ const NavBar = () => {
     
     return (
        
-        <AppBar position="static" color="primary">
+        <AppBar position="static" color="secondary">
             <Toolbar variant="dense">
                 <Typography variant="h6">Shares Portfolio</Typography>
                 <Link to="/" className="link" style={{ textDecoration: 'none' }}><MenuItem>Home</MenuItem></Link>
