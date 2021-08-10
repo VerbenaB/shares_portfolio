@@ -8,9 +8,19 @@ const ShareCard = ({ share }) => {
   const reversed = copy.reverse();
   reversed.splice(0, 30);
 
+  // const date = dateArray[0]
+  // console.log(moment(date).format("YYYY.MM.DD"))
+  // const newDate = moment(date).format("YYYY.MM.DD");
+  // const unixDate = parseInt((new Date(newDate).getTime() / 1000).toFixed(0))
+
   const getDataForPoints = () => {
     return reversed.map((point, i) => {
-      return Number(share["Time Series (Daily)"][reversed[i]]["4. close"]);
+      return ([
+        // This needs to be turned into a timestamp
+        // (share["Time Series (Daily)"][reversed[i]]).getTime() / 1000,
+        // unixDate,
+        Number(share["Time Series (Daily)"][reversed[i]]["4. close"]),
+      ]);
     });
   };
 
@@ -27,7 +37,7 @@ const ShareCard = ({ share }) => {
           },
           x: -15,
           style: {
-            color: "#000",
+            color: "#E03838",
             position: "absolute",
           },
           align: "left",
@@ -52,9 +62,6 @@ const ShareCard = ({ share }) => {
         gapSize: 6,
       },
     },
-    // rangeSelector: {
-    //   selected: 1,
-    // },
     title: {
       text: `Stock Chart`,
     },
@@ -74,11 +81,6 @@ const ShareCard = ({ share }) => {
     },
     rangeSelector: {
       buttons: [
-        // {
-        //   type: "day",
-        //   count: 1,
-        //   text: "1d",
-        // },
         {
           type: "day",
           count: 7,
@@ -89,11 +91,6 @@ const ShareCard = ({ share }) => {
           count: 1,
           text: "1m",
         },
-        // {
-        //   type: "month",
-        //   count: 3,
-        //   text: "3m",
-        // },
         {
           type: "all",
           text: "All",
