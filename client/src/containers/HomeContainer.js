@@ -2,9 +2,10 @@ import React from 'react';
 
 const HomeContainer = () => {
     return (
-    <>
-        <p>Hello, this is home</p>
-    </>
+        <div>
+            <h2>Shares Portfolio</h2>
+            <h3>Manage your shares in one place</h3>
+        </div>
     )
 }
 
