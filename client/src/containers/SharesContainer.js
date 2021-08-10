@@ -59,7 +59,7 @@ const SharesContainer = () => {
 
   return (
     <>
-      <TotalsPanel />
+      <TotalsPanel allInfo={sharesInfo} />
       <SharesCarousel />
       <SharesTable allInfo={sharesInfo} />
       <AddForm search={searchTicker} onShareSubmit={shareSubmit} />
