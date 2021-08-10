@@ -1,3 +1,5 @@
+import "./TotalValue.css";
+
 const TotalValue = ({ allInfo }) => {
   if (!allInfo || !allInfo[0]["Meta Data"]) {
     return null;
@@ -13,23 +15,17 @@ const TotalValue = ({ allInfo }) => {
         allInfo[index]["num_of_shares"];
     });
     return (
-      <tr>
-        <td>{totalValue}</td>
-      </tr>
+      
+        <h2>${totalValue}</h2>
+    
     );
   };
 
   return (
-    <>
-      <table>
-        <thead>
-          <tr>
-            <th>Total value</th>
-          </tr>
-        </thead>
-        <tbody>{calculateTotal()}</tbody>
-      </table>
-    </>
+    <div className="totals">
+      <h3>Portfolio Value</h3>
+      <h3>{calculateTotal()}</h3>
+    </div>
   );
 };
 

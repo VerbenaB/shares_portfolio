@@ -1,4 +1,6 @@
 import React from "react";
+import "./SharesTable.css";
+import { TableCell, TableRow, TableBody, TableHead } from "@material-ui/core";
 
 const SharesTable = ({ allInfo }) => {
   if (!allInfo || !allInfo[0]["Meta Data"]) {
@@ -10,31 +12,31 @@ const SharesTable = ({ allInfo }) => {
   const populateTable = () => {
     return allInfo.map((share, index) => {
       return (
-        <tr key={index}>
-          <td>{allInfo[index]["name"]}</td>
-          <td>{allInfo[index]["Meta Data"]["2. Symbol"]}</td>
-          <td>
+        <TableRow key={index}>
+          <TableCell className="share-td">{allInfo[index]["name"]}</TableCell>
+          <TableCell className="share-td">{allInfo[index]["Meta Data"]["2. Symbol"]}</TableCell>
+          <TableCell className="share-td">
             {allInfo[index]["Time Series (Daily)"][dateArray[0]]["4. close"] *
               allInfo[index]["num_of_shares"]}
-          </td>
-        </tr>
+          </TableCell>
+        </TableRow>
       );
     });
   };
 
   return (
-    <>
-      <table>
-        <thead>
-          <tr>
-            <th>Name</th>
-            <th>Symbol</th>
-            <th>Current value</th>
-          </tr>
-        </thead>
-        <tbody>{populateTable()}</tbody>
-      </table>
-    </>
+   <>
+    <TableHead>
+      <TableRow>
+        <TableCell>Name</TableCell>
+        <TableCell align="left">Symbol</TableCell>
+        <TableCell align="right">Current Value</TableCell>
+      </TableRow>
+    </TableHead>
+    <TableBody>
+      {populateTable()}
+    </TableBody>
+   </>
   );
 };
 

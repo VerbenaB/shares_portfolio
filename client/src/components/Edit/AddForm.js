@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import {TextField, Button, FormGroup} from "@material-ui/core"
 
 const AddForm = ({ search, onShareSubmit, portfolioShares }) => {
   const [shareObject, setShareObject] = useState("");
@@ -35,29 +36,21 @@ const AddForm = ({ search, onShareSubmit, portfolioShares }) => {
     setNumberOfShares("");
   };
 
-  let numbers = [...Array(51).keys()];
-  numbers = numbers.splice(1, 50);
 
   return (
     <>
-      <h2>Add shares to your portfolio</h2>
-      <form onSubmit={handleButtonClick}>
-        <input type="text" placeholder="search" onChange={handleShareChange} />
+      <h2>New Share</h2>
+      <form onSubmit={handleButtonClick} className="form">
+        <TextField type="text" label="Name" onChange={handleShareChange} />
 
-        <label htmlFor="numbers">Number of shares</label>
-        <input
-          list="numbers"
-          id="numbers"
-          placeholder="5"
+        <TextField
+          
+          defaultValue="5"
+          label="Number of shares"
           onChange={handleNumberChange}
         />
-        <datalist id="numbers">
-          {numbers.map((number) => {
-            return <option key={number} value={number} />;
-          })}
-        </datalist>
 
-        <button>Add</button>
+        <Button color="secondary">Add</Button>
       </form>
 
       {/* <p>{displayError}</p> */}
