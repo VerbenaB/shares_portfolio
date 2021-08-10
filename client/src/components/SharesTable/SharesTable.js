@@ -12,9 +12,9 @@ const SharesTable = ({ allInfo }) => {
     return allInfo.map((share, index) => {
       return (
         <tr key={index}>
-          <td>{allInfo[index]["name"]}</td>
-          <td>{allInfo[index]["Meta Data"]["2. Symbol"]}</td>
-          <td>
+          <td className="share-td">{allInfo[index]["name"]}</td>
+          <td className="share-td">{allInfo[index]["Meta Data"]["2. Symbol"]}</td>
+          <td className="share-td">
             {allInfo[index]["Time Series (Daily)"][dateArray[0]]["4. close"] *
               allInfo[index]["num_of_shares"]}
           </td>
@@ -25,7 +25,7 @@ const SharesTable = ({ allInfo }) => {
 
   return (
     <div className="shares-table">
-      <table>
+      <table className="table">
         <thead>
           <tr>
             <th>Name</th>

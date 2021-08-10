@@ -1,4 +1,12 @@
 .shares-table {
-    background-color: black;
+    background-color: #eeeeee;
+    padding: 20px;
+    margin: 20px;
+    text-align: center;
+    
+}
+.table, .share-td {
+    border: 1px solid black;
+    border-collapse: collapse;
     
 }

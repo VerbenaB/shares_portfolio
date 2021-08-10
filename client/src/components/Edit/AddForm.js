@@ -39,7 +39,7 @@ const AddForm = ({ search, onShareSubmit, portfolioShares }) => {
 
   return (
     <>
-      <h2>Add a Share</h2>
+      <h2>New Share</h2>
       <form onSubmit={handleButtonClick} className="form">
         <TextField type="text" label="search" onChange={handleShareChange} />
 
