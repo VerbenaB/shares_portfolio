@@ -117,15 +117,10 @@ const ShareCard = ({ share }) => {
 
   return (
     <>
-      <table>
-        <thead>
-          <tr>
-            <th>Name</th>
-          </tr>
-        </thead>
-        <tbody>{populateTable()}</tbody>
-      </table>
-      <ReactHighcharts config={configPrice} />
+      <div>
+        <h3>{populateTable()}</h3>
+        <ReactHighcharts config={configPrice} />
+      </div>
     </>
   );
 };
