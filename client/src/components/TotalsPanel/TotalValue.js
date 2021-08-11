@@ -14,17 +14,13 @@ const TotalValue = ({ allInfo }) => {
         allInfo[index]["Time Series (Daily)"][dateArray[0]]["4. close"] *
         allInfo[index]["num_of_shares"];
     });
-    return (
-      
-        <h2>${totalValue}</h2>
-    
-    );
+    return <h2>${totalValue}</h2>;
   };
 
   return (
     <div className="totals">
       <h2>Portfolio Value</h2>
-      <h1>{calculateTotal()}</h1>
+      <h2>{calculateTotal()}</h2>
     </div>
   );
 };
