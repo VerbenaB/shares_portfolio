@@ -30,7 +30,6 @@ const SharesContainer = () => {
         avShare.name = shares[i]["share"]["name"];
         return avShare;
       });
-      console.log(sharesWithNumOfShares);
       setSharesInfo(sharesWithNumOfShares);
     });
   };
@@ -64,8 +63,6 @@ const SharesContainer = () => {
   if (addOpen === false) {
     return (
       <div className="main">
-        {/* <AddForm search={searchTicker} onShareSubmit={shareSubmit} /> */}
-
         <div className="dashboard">
           <Grid container spacing={2}>
             <Grid item xs={1}>

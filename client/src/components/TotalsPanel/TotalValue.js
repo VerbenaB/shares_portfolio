@@ -1,5 +1,3 @@
-import "./TotalValue.css";
-
 const TotalValue = ({ allInfo }) => {
   if (!allInfo || !allInfo[0]["Meta Data"]) {
     return null;

@@ -13,12 +13,6 @@ export const postShare = (payload) => {
   }).then((res) => res.json());
 };
 
-// export const deleteShare = (id) => {
-//   return fetch(baseURL1 + id, {
-//     method: "DELETE",
-//   }).then((res) => res.json());
-// };
-
 export const getTickers = (query) => {
   console.log(baseURL2 + `?search_term=${query}`);
   return fetch(baseURL2 + `?search_term=${query}`)
