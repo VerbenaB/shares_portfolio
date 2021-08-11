@@ -1,13 +1,16 @@
-import React from 'react';
+import React from "react";
 import "./HomeContainer.css";
 
 const HomeContainer = () => {
-    return (
-        <div className="page">
-            <h1>Shares Portfolio</h1>
-            <h6>Manage your shares in one place</h6>
-        </div>
-    )
-}
+  return (
+    <div className="page">
+      <div className="border">
+        <h1>Treefolio</h1>
+
+        <h6>Watch your investments take root</h6>
+      </div>
+    </div>
+  );
+};
 
 export default HomeContainer;

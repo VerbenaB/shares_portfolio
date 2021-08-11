@@ -1,9 +1,7 @@
 body {
   text-align: center;
-  background-color: #99B898;
-  font-family: 'Roboto', sans-serif;
+  background-color: rgb(255, 254, 248);
+  font-family: "Roboto", sans-serif;
 }
 
-@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
-
-
+@import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");

@@ -13,10 +13,14 @@ const SharesTable = ({ allInfo }) => {
       return (
         <TableRow key={index}>
           <TableCell className="share-td">{allInfo[index]["name"]}</TableCell>
-          <TableCell className="share-td">{allInfo[index]["Meta Data"]["2. Symbol"]}</TableCell>
           <TableCell className="share-td">
-            {(allInfo[index]["Time Series (Daily)"][dateArray[0]]["4. close"] *
-              allInfo[index]["num_of_shares"]).toFixed(2)}
+            {allInfo[index]["Meta Data"]["2. Symbol"]}
+          </TableCell>
+          <TableCell className="share-td">
+            {(
+              allInfo[index]["Time Series (Daily)"][dateArray[0]]["4. close"] *
+              allInfo[index]["num_of_shares"]
+            ).toFixed(2)}
           </TableCell>
         </TableRow>
       );
@@ -24,18 +28,16 @@ const SharesTable = ({ allInfo }) => {
   };
 
   return (
-   <>
-    <TableHead>
-      <TableRow>
-        <TableCell>Name</TableCell>
-        <TableCell align="left">Symbol</TableCell>
-        <TableCell align="right">Current Value</TableCell>
-      </TableRow>
-    </TableHead>
-    <TableBody>
-      {populateTable()}
-    </TableBody>
-   </>
+    <>
+      <TableHead>
+        <TableRow>
+          <TableCell>Name</TableCell>
+          <TableCell align="left">Symbol</TableCell>
+          <TableCell align="right">Current Value </TableCell>
+        </TableRow>
+      </TableHead>
+      <TableBody>{populateTable()}</TableBody>
+    </>
   );
 };
 

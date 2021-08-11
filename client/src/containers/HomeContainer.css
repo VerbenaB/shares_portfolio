@@ -1,4 +1,14 @@
 .page {
-    color: white;
-    font-size: 60px;
+  color: white;
+  font-size: 60px;
+  background: linear-gradient(#ebf8e1, #fad9c1, #fccfaa);
+  padding: 20px;
+  padding-bottom: 20px;
+  margin: 0 auto;
+  height: 550px;
+}
+
+h1,
+h6 {
+  text-shadow: 5px 5px 5px #2a363b;
 }
