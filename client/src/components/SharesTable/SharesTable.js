@@ -1,5 +1,4 @@
 import React from "react";
-import "./SharesTable.css";
 import { TableCell, TableRow, TableBody, TableHead } from "@material-ui/core";
 
 const SharesTable = ({ allInfo }) => {
@@ -16,8 +15,8 @@ const SharesTable = ({ allInfo }) => {
           <TableCell className="share-td">{allInfo[index]["name"]}</TableCell>
           <TableCell className="share-td">{allInfo[index]["Meta Data"]["2. Symbol"]}</TableCell>
           <TableCell className="share-td">
-            {allInfo[index]["Time Series (Daily)"][dateArray[0]]["4. close"] *
-              allInfo[index]["num_of_shares"]}
+            {(allInfo[index]["Time Series (Daily)"][dateArray[0]]["4. close"] *
+              allInfo[index]["num_of_shares"]).toFixed(2)}
           </TableCell>
         </TableRow>
       );

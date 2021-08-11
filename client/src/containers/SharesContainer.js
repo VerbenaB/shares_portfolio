@@ -44,10 +44,15 @@ const SharesContainer = () => {
     postShare(shareObject);
   };
 
+  if ((!sharesInfo) || sharesInfo[0]["Note"]) {
+    return <div className="dashboard"><p>Loading ...</p></div>  
+  }
+
   return (
     <div className="main">
       
         <div className="dashboard">
+          
           <Grid container spacing={2}>
             <Grid item xs={6} sm={6}>
               <TotalsPanel allInfo={sharesInfo} />
