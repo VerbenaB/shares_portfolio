@@ -2,13 +2,11 @@ import React, { useEffect, useState } from "react";
 import TotalsPanel from "../components/TotalsPanel/TotalPanel";
 import SharesTable from "../components/SharesTable/SharesTable";
 import SharesList from "../components/SharesCarousel/SharesList";
-// import ToggleAddForm from '../components/Edit/ToggleAddForm';
 import AddForm from "../components/Edit/AddForm";
 import { getShares, getTickers, postShare } from "../components/ShareService";
 import "./SharesContainer.css";
 import Grid from "@material-ui/core/Grid";
-// import ToggleDeleteForm from '../components/Edit/ToggleDeleteForm';
-// import DeleteForm from '../components/Edit/DeleteForm';
+import AddCircleIcon from '@material-ui/icons/AddCircle';
 
 const SharesContainer = () => {
   const [sharesInfo, setSharesInfo] = useState(null);
@@ -62,7 +60,8 @@ const SharesContainer = () => {
       <div className="main">
   
         {/* <AddForm search={searchTicker} onShareSubmit={shareSubmit} /> */}
-        <button onClick={handleToggleAdd}>+</button>
+        <button className="add-plus" onClick={handleToggleAdd}><span class="material-icons">
+add_circle</span></button>
         
           <div className="dashboard">
             
@@ -87,7 +86,7 @@ const SharesContainer = () => {
     <div className="main">
 
       <AddForm search={searchTicker} onShareSubmit={shareSubmit} />
-      <button onClick={handleToggleAdd}>+</button>
+      <button className="add-plus" onClick={handleToggleAdd}><AddCircleIcon/></button>
       
         <div className="dashboard">
           
@@ -106,10 +105,6 @@ const SharesContainer = () => {
       
     </div>
   );
-
-
-
-  
 };
 
 export default SharesContainer;
