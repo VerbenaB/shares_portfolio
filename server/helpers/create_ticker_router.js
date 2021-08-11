@@ -1,5 +1,4 @@
 const express = require("express");
-const ObjectID = require("mongodb").ObjectID;
 
 const createTickerRouter = function (collection) {
   const router = express.Router();
