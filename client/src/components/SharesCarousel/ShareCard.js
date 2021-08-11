@@ -1,4 +1,6 @@
 import ReactHighcharts from "react-highcharts/ReactHighstock.src";
+import { Typography } from "@material-ui/core";
+
 import moment from "moment";
 
 const ShareCard = ({ share }) => {
@@ -8,17 +10,10 @@ const ShareCard = ({ share }) => {
   const reversed = copy.reverse();
   reversed.splice(0, 30);
 
-  // const date = dateArray[0]
-  // console.log(moment(date).format("YYYY.MM.DD"))
-  // const newDate = moment(date).format("YYYY.MM.DD");
-  // const unixDate = parseInt((new Date(newDate).getTime() / 1000).toFixed(0))
 
   const getDataForPoints = () => {
     return reversed.map((point, i) => {
       return ([
-        // This needs to be turned into a timestamp
-        // (share["Time Series (Daily)"][reversed[i]]).getTime() / 1000,
-        // unixDate,
         Number(share["Time Series (Daily)"][reversed[i]]["4. close"]),
       ]);
     });
@@ -29,18 +24,19 @@ const ShareCard = ({ share }) => {
   const configPrice = {
     yAxis: [
       {
-        offset: 20,
+        offset: 30,
 
         labels: {
           formatter: function () {
             return numberFormat.format(this.value);
           },
-          x: -15,
+          x: -20,
           style: {
             color: "#E03838",
             position: "absolute",
+            align: "center",
           },
-          align: "left",
+          align: "center",
         },
       },
     ],
@@ -56,26 +52,37 @@ const ShareCard = ({ share }) => {
     },
     plotOptions: {
       series: {
-        pointStart: moment().subtract(reversed.length, 'days'),
+        pointStart: moment().subtract(reversed.length, "days"),
         pointInterval: 24 * 3600 * 1000,
         showInNavigator: true,
         gapSize: 6,
       },
     },
-    title: {
-      text: `Stock Chart`,
-    },
+
     chart: {
-      height: 400,
+      height: 300,
+      borderRadius: 20,
+      borderWidth: 2,
+      borderColour: "#E84A5F",
+      backgroundColor: {
+        linearGradient: { x1: 0, y1: 0, x2: 1, y2: 1 },
+        stops: [
+          [0, "rgb(254, 211, 181)"],
+          [1, "rgb(200, 200, 181)"],
+        ],
+      },
     },
 
     credits: {
-      enabled: false,
+      align: "right",
     },
 
     legend: {
-      enabled: true,
+      align: "left",
+      verticalAlign: "top",
+      floating: true,
     },
+
     xAxis: {
       type: "date",
     },
@@ -114,14 +121,9 @@ const ShareCard = ({ share }) => {
   const populateTable = () => {
     return (
       <>
-        <tr key={share["name"]}>
-          <td>{share["name"]}</td>
-          {/* <td>{allInfo[index]["Meta Data"]["2. Symbol"]}</td> */}
-          <td>
-            {share["Time Series (Daily)"][dateArray[0]]["4. close"] *
-              share["num_of_shares"]}
-          </td>
-        </tr>
+        <div key={share["name"]}>
+          <h4>{share["name"]}</h4>
+        </div>
         
       </>
     );
@@ -129,16 +131,10 @@ const ShareCard = ({ share }) => {
 
   return (
     <>
-      <table>
-        <thead>
-          <tr>
-            <th>Name</th>
-            <th>Current value</th>
-          </tr>
-        </thead>
-        <tbody>{populateTable()}</tbody>
-      </table>
-      <ReactHighcharts config={configPrice} />
+      <div>
+        <Typography align = "center">{populateTable()}</Typography>
+        <ReactHighcharts config={configPrice} />
+      </div>
     </>
   );
 };
