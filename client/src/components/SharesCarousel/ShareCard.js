@@ -61,7 +61,9 @@ const ShareCard = ({ share }) => {
 
     chart: {
       height: 300,
-      border-radius: 
+      borderRadius: 20,
+      borderWidth: 2,
+      borderColour: "#E84A5F",
       backgroundColor: {
         linearGradient: { x1: 0, y1: 0, x2: 1, y2: 1 },
         stops: [
