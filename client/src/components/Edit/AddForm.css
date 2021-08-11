@@ -2,6 +2,10 @@
   margin: 5px;
 }
 
+.form {
+  padding-top: 10px;
+}
+
 .add-button {
   color: #e84a5f;
   background-color: white;
