@@ -1,5 +1,10 @@
 .page {
-    color: #ff847c;
-    font-size: 60px;
-  
+  color:#2A363B ;
+  font-size: 60px;
+  background: linear-gradient(#ebf8e1, #fad9c1, #fccfaa);
+  padding: 20px;
+  padding-bottom: 20px;
+  margin: 0 auto;
+  height: 600px;
 }
+
