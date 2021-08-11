@@ -1,6 +1,6 @@
 .dashboard {
   /* background-color: white; */
-  background: linear-gradient( #ebf8e1, #fad9c1, #FCCFAA);
+  background: linear-gradient(#ebf8e1, #fad9c1, #fccfaa);
   margin: 20px;
   color: #2a363b;
   border-radius: 20px;
@@ -11,8 +11,8 @@
 .add-plus {
   color: #e84a5f;
   background-color: rgba(0, 0, 0, 0);
-  box-sizing: border-box;
-  font-size: 100%;
+
+  font-size: 40px;
   padding: 5px;
   width: 60px;
   border: none;

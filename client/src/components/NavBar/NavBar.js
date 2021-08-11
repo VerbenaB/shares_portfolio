@@ -12,14 +12,6 @@ import {
 import "./NavBar.css";
 
 const NavBar = () => {
-  // const [anchor, setAnchor] = React.useState(null);
-  // const open = Boolean(anchor);
-
-  // const handleMenu = (event) => {
-  //     setAnchor(event.currentTarget);
-  //  };
-
-  // const isMobile = useMediaQuery((theme) => theme.breakpoints.down("sm"));
 
   return (
     <AppBar position="static" color="secondary">

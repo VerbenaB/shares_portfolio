@@ -23,8 +23,8 @@ const TotalValue = ({ allInfo }) => {
 
   return (
     <div className="totals">
-      <h3>Portfolio Value</h3>
-      <h3>{calculateTotal()}</h3>
+      <h2>Portfolio Value</h2>
+      <h1>{calculateTotal()}</h1>
     </div>
   );
 };
