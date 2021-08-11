@@ -1,5 +1,4 @@
 import React from "react";
-import "./SharesTable.css";
 import { TableCell, TableRow, TableBody, TableHead } from "@material-ui/core";
 
 const SharesTable = ({ allInfo }) => {
