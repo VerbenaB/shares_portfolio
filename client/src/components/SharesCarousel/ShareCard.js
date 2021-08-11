@@ -56,7 +56,7 @@ const ShareCard = ({ share }) => {
     },
     plotOptions: {
       series: {
-        pointStart: moment().date("2021 8 10"),//.subtract(3, 'months'),
+        pointStart: moment().subtract(reversed.length, 'days'),
         pointInterval: 24 * 3600 * 1000,
         showInNavigator: true,
         gapSize: 6,
@@ -122,10 +122,7 @@ const ShareCard = ({ share }) => {
               share["num_of_shares"]}
           </td>
         </tr>
-        <tr>
-          <td>Highcharts chart</td>
-          {/* <td>{getDataForPoints()}</td> */}
-        </tr>
+        
       </>
     );
   };
