@@ -22,9 +22,9 @@ const NavBar = () => {
   // const isMobile = useMediaQuery((theme) => theme.breakpoints.down("sm"));
 
   return (
-    <AppBar position="static" color="primary">
+    <AppBar position="static" color="secondary">
       <Toolbar variant="dense">
-        <Typography variant="h6" color="white">
+        <Typography variant="h6" className="brand">
           Shares Portfolio
         </Typography>
         <Link to="/" className="link" style={{ textDecoration: "none" }}>
