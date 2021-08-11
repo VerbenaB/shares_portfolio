@@ -41,6 +41,8 @@ const SharesContainer = () => {
 
   const shareSubmit = (shareObject) => {
     postShare(shareObject);
+    setAddOpen(false);
+    window.location.reload();
   };
 
   const handleToggleAdd = () => {
@@ -60,8 +62,7 @@ const SharesContainer = () => {
       <div className="main">
   
         {/* <AddForm search={searchTicker} onShareSubmit={shareSubmit} /> */}
-        <button className="add-plus" onClick={handleToggleAdd}><span class="material-icons">
-add_circle</span></button>
+        <button className="add-plus" onClick={handleToggleAdd}><AddCircleIcon/></button>
         
           <div className="dashboard">
             
