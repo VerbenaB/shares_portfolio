@@ -1,5 +1,3 @@
-import "./TotalValue.css";
-
 const TotalValue = ({ allInfo }) => {
   if (!allInfo || !allInfo[0]["Meta Data"]) {
     return null;
@@ -14,7 +12,7 @@ const TotalValue = ({ allInfo }) => {
         allInfo[index]["Time Series (Daily)"][dateArray[0]]["4. close"] *
         allInfo[index]["num_of_shares"];
     });
-    return <h2>${totalValue}</h2>;
+    return <h2>${totalValue.toFixed(2)}</h2>;
   };
 
   return (

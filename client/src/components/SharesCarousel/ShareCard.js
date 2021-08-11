@@ -1,6 +1,5 @@
 import ReactHighcharts from "react-highcharts/ReactHighstock.src";
 import { Typography } from "@material-ui/core";
-
 import moment from "moment";
 
 const ShareCard = ({ share }) => {
@@ -9,7 +8,6 @@ const ShareCard = ({ share }) => {
 
   const reversed = copy.reverse();
   reversed.splice(0, 30);
-
 
   const getDataForPoints = () => {
     return reversed.map((point, i) => {

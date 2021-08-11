@@ -30,7 +30,6 @@ const SharesContainer = () => {
         avShare.name = shares[i]["share"]["name"];
         return avShare;
       });
-      console.log(sharesWithNumOfShares);
       setSharesInfo(sharesWithNumOfShares);
     });
   };
@@ -64,19 +63,17 @@ const SharesContainer = () => {
   if (addOpen === false) {
     return (
       <div className="main">
-        {/* <AddForm search={searchTicker} onShareSubmit={shareSubmit} /> */}
-
         <div className="dashboard">
           <Grid container spacing={2}>
-            <Grid item xs={1}>
+            <Grid item xs={12}>
               <button className="add-plus" onClick={handleToggleAdd}>
                 <AddCircleIcon fontSize="large" />
               </button>
             </Grid>
-            <Grid item xs={5} sm={5}>
+            <Grid item xs={12} sm={6}>
               <TotalsPanel allInfo={sharesInfo} />
             </Grid>
-            <Grid item xs={6}>
+            <Grid item xs={12} sm={6}>
               <SharesTable allInfo={sharesInfo} />
             </Grid>
 
