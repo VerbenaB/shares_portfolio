@@ -1,7 +1,10 @@
 import React, { useState } from "react";
-import {TextField, Button, FormGroup} from "@material-ui/core"
+import {TextField, FormGroup} from "@material-ui/core";
+import {Button} from 'react-bootstrap';
+import "./AddForm.css";
 
-const AddForm = ({ search, onShareSubmit, portfolioShares }) => {
+
+const AddForm = ({ search, onShareSubmit}) => {
   const [shareObject, setShareObject] = useState("");
   const [numberOfShares, setNumberOfShares] = useState("");
 
@@ -15,17 +18,9 @@ const AddForm = ({ search, onShareSubmit, portfolioShares }) => {
     setNumberOfShares(e.target.value);
   };
 
-  var displayError = "";
 
   const handleButtonClick = (e) => {
     e.preventDefault();
-
-    // if (portfolioShares.length() >= 5) {
-    //   displayError =
-    //     "Sorry, you've reached your limit. If you wish to add another share, please delete one first";
-    // } else {
-    //   displayError = "Hello";
-    // }
 
     onShareSubmit({
       share: shareObject[0],
@@ -41,19 +36,31 @@ const AddForm = ({ search, onShareSubmit, portfolioShares }) => {
     <>
       <h2>New Share</h2>
       <form onSubmit={handleButtonClick} className="form">
-        <TextField type="text" label="Name" onChange={handleShareChange} />
+        
+          <TextField className="form-input" type="text" label="Name" onChange={handleShareChange} />
+        
+        
+          <TextField className="form-input" label="Number of shares" onChange={handleNumberChange}/>
+        
+        <button className="add-button" onClick={handleButtonClick}>Add</button>
+      </form> 
 
-        <TextField
+      {/* <form onSubmit={handleButtonClick}>
+        <input type="text" placeholder="search" onChange={handleShareChange} />
+
+        <label htmlFor="numbers">Number of shares</label>
+        <input
           
-          defaultValue="5"
-          label="Number of shares"
+          id="numbers"
+          placeholder="5"
           onChange={handleNumberChange}
         />
+        
 
-        <Button color="secondary">Add</Button>
-      </form>
+        <button>Add</button>
+      </form> */}
 
-      {/* <p>{displayError}</p> */}
+      
     </>
   );
 };
