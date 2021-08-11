@@ -56,7 +56,7 @@ const ShareCard = ({ share }) => {
     },
     plotOptions: {
       series: {
-        pointStart: Date.UTC(2021, 5, 1),
+        pointStart: moment().date("2021 8 10"),//.subtract(3, 'months'),
         pointInterval: 24 * 3600 * 1000,
         showInNavigator: true,
         gapSize: 6,
