@@ -1,15 +1,15 @@
 .form-input {
-    margin: 5px;
+  margin: 5px;
 }
 
 .add-button {
-    color:  #E84A5F;
-    background-color: #99B898;
-    box-sizing: border-box;
-    font-size: 100%;
-    padding: 5px;
-    width: 60px;
-    border: none;
-    position: relative;
-    top: 17px;
+  color: #e84a5f;
+  background-color: white;
+  box-sizing: border-box;
+  font-size: 100%;
+  padding: 5px;
+  width: 60px;
+  border: none;
+  position: relative;
+  top: 17px;
 }

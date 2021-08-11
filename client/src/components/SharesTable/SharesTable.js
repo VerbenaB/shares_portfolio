@@ -33,7 +33,7 @@ const SharesTable = ({ allInfo }) => {
         <TableRow>
           <TableCell>Name</TableCell>
           <TableCell align="left">Symbol</TableCell>
-          <TableCell align="right">Current Value ($)</TableCell>
+          <TableCell align="right">Current Value </TableCell>
         </TableRow>
       </TableHead>
       <TableBody>{populateTable()}</TableBody>

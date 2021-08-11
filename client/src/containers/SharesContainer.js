@@ -68,17 +68,18 @@ const SharesContainer = () => {
 
         <div className="dashboard">
           <Grid container spacing={2}>
-            <Grid item xs={6} sm={6}>
-              <TotalsPanel allInfo={sharesInfo} />
-            </Grid>
-            <Grid item xs={5}>
-              <SharesTable allInfo={sharesInfo} />
-            </Grid>
             <Grid item xs={1}>
               <button className="add-plus" onClick={handleToggleAdd}>
                 <AddCircleIcon fontSize="large" />
               </button>
             </Grid>
+            <Grid item xs={5} sm={5}>
+              <TotalsPanel allInfo={sharesInfo} />
+            </Grid>
+            <Grid item xs={6}>
+              <SharesTable allInfo={sharesInfo} />
+            </Grid>
+
             <Grid item xs={12}>
               <SharesList allInfo={sharesInfo} />
             </Grid>
@@ -94,17 +95,18 @@ const SharesContainer = () => {
 
       <div className="dashboard">
         <Grid container spacing={2}>
-          <Grid item xs={6} sm={6}>
-            <TotalsPanel allInfo={sharesInfo} />
-          </Grid>
-          <Grid item xs={5}>
-            <SharesTable allInfo={sharesInfo} />
-          </Grid>
           <Grid item xs={1}>
             <button className="add-plus" onClick={handleToggleAdd}>
               <AddCircleIcon fontSize="large" />
             </button>
           </Grid>
+          <Grid item xs={5} sm={5}>
+            <TotalsPanel allInfo={sharesInfo} />
+          </Grid>
+          <Grid item xs={6}>
+            <SharesTable allInfo={sharesInfo} />
+          </Grid>
+
           <Grid item xs={12}>
             <SharesList allInfo={sharesInfo} />
           </Grid>
