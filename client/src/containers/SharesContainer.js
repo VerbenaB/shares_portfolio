@@ -12,6 +12,7 @@ import Grid from "@material-ui/core/Grid";
 
 const SharesContainer = () => {
   const [sharesInfo, setSharesInfo] = useState(null);
+  const [addOpen, setAddOpen] = useState(false);
 
   useEffect(() => {
     getShares().then((dbShares) => {
@@ -44,12 +45,49 @@ const SharesContainer = () => {
     postShare(shareObject);
   };
 
+  const handleToggleAdd = () => {
+    if (addOpen == false) {
+      setAddOpen(true);
+    } else {
+      setAddOpen(false);
+    }
+  }
+
   if ((!sharesInfo) || sharesInfo[0]["Note"]) {
     return <div className="dashboard"><p>Loading ...</p></div>  
   }
 
+  if (addOpen == false) {
+    return (
+      <div className="main">
+  
+        {/* <AddForm search={searchTicker} onShareSubmit={shareSubmit} /> */}
+        <button onClick={handleToggleAdd}>+</button>
+        
+          <div className="dashboard">
+            
+            <Grid container spacing={2}>
+              <Grid item xs={6} sm={6}>
+                <TotalsPanel allInfo={sharesInfo} />
+              </Grid>
+              <Grid item xs={6}>
+                <SharesTable allInfo={sharesInfo} />
+              </Grid>
+              <Grid item xs={12}>
+                <SharesList allInfo={sharesInfo} />
+              </Grid>
+            </Grid>
+          </div>
+        
+      </div>
+    );
+  }
+
   return (
     <div className="main">
+
+      <AddForm search={searchTicker} onShareSubmit={shareSubmit} />
+      <button onClick={handleToggleAdd}>+</button>
       
         <div className="dashboard">
           
@@ -66,10 +104,12 @@ const SharesContainer = () => {
           </Grid>
         </div>
       
-
-      <AddForm search={searchTicker} onShareSubmit={shareSubmit} />
     </div>
   );
+
+
+
+  
 };
 
 export default SharesContainer;
