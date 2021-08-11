@@ -62,7 +62,7 @@ const SharesContainer = () => {
       <div className="main">
   
         {/* <AddForm search={searchTicker} onShareSubmit={shareSubmit} /> */}
-        <button className="add-plus" onClick={handleToggleAdd}><AddCircleIcon/></button>
+        
         
           <div className="dashboard">
             
@@ -70,8 +70,11 @@ const SharesContainer = () => {
               <Grid item xs={6} sm={6}>
                 <TotalsPanel allInfo={sharesInfo} />
               </Grid>
-              <Grid item xs={6}>
+              <Grid item xs={5}>
                 <SharesTable allInfo={sharesInfo} />
+              </Grid>
+              <Grid item xs={1}>
+              <button className="add-plus" onClick={handleToggleAdd}><AddCircleIcon fontSize="large"/></button>
               </Grid>
               <Grid item xs={12}>
                 <SharesList allInfo={sharesInfo} />
@@ -87,7 +90,7 @@ const SharesContainer = () => {
     <div className="main">
 
       <AddForm search={searchTicker} onShareSubmit={shareSubmit} />
-      <button className="add-plus" onClick={handleToggleAdd}><AddCircleIcon/></button>
+      
       
         <div className="dashboard">
           
@@ -95,8 +98,11 @@ const SharesContainer = () => {
             <Grid item xs={6} sm={6}>
               <TotalsPanel allInfo={sharesInfo} />
             </Grid>
-            <Grid item xs={6}>
+            <Grid item xs={5}>
               <SharesTable allInfo={sharesInfo} />
+            </Grid>
+            <Grid item xs={1}>
+            <button className="add-plus" onClick={handleToggleAdd}><AddCircleIcon fontSize="large"/></button>
             </Grid>
             <Grid item xs={12}>
               <SharesList allInfo={sharesInfo} />

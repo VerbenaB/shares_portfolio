@@ -33,7 +33,7 @@ const AddForm = ({ search, onShareSubmit}) => {
 
   return (
     <>
-      <h2>New Share</h2>
+      
       <form onSubmit={handleButtonClick} className="form">
         
           <TextField className="form-input" type="text" label="Name" onChange={handleShareChange} />

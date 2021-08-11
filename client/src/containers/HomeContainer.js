@@ -1,10 +1,11 @@
 import React from 'react';
+import "./HomeContainer.css";
 
 const HomeContainer = () => {
     return (
-        <div>
-            <h2>Shares Portfolio</h2>
-            <h3>Manage your shares in one place</h3>
+        <div className="page">
+            <h1>Shares Portfolio</h1>
+            <h6>Manage your shares in one place</h6>
         </div>
     )
 }
