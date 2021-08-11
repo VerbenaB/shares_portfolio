@@ -1,5 +1,6 @@
 import ReactHighcharts from "react-highcharts/ReactHighstock.src";
 import { Typography } from "@material-ui/core";
+
 import moment from "moment";
 
 const ShareCard = ({ share }) => {
@@ -23,18 +24,19 @@ const ShareCard = ({ share }) => {
   const configPrice = {
     yAxis: [
       {
-        offset: 20,
+        offset: 30,
 
         labels: {
           formatter: function () {
             return numberFormat.format(this.value);
           },
-          x: -15,
+          x: -20,
           style: {
             color: "#E03838",
             position: "absolute",
+            align: "center",
           },
-          align: "left",
+          align: "center",
         },
       },
     ],
@@ -50,26 +52,35 @@ const ShareCard = ({ share }) => {
     },
     plotOptions: {
       series: {
-        pointStart: moment().subtract(reversed.length, 'days'),
+        pointStart: moment().subtract(reversed.length, "days"),
         pointInterval: 24 * 3600 * 1000,
         showInNavigator: true,
         gapSize: 6,
       },
     },
-    title: {
-      text: ` `,
-    },
+
     chart: {
-      height: 400,
+      height: 300,
+      border-radius: 
+      backgroundColor: {
+        linearGradient: { x1: 0, y1: 0, x2: 1, y2: 1 },
+        stops: [
+          [0, "rgb(254, 211, 181)"],
+          [1, "rgb(200, 200, 181)"],
+        ],
+      },
     },
 
     credits: {
-      enabled: false,
+      align: "right",
     },
 
     legend: {
-      enabled: true,
+      align: "left",
+      verticalAlign: "top",
+      floating: true,
     },
+
     xAxis: {
       type: "date",
     },
