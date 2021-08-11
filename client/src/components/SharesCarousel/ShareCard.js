@@ -1,4 +1,5 @@
 import ReactHighcharts from "react-highcharts/ReactHighstock.src";
+import { Typography } from "@material-ui/core";
 import moment from "moment";
 
 const ShareCard = ({ share }) => {
@@ -107,9 +108,9 @@ const ShareCard = ({ share }) => {
   const populateTable = () => {
     return (
       <>
-        <tr key={share["name"]}>
-          <td>{share["name"]}</td>
-        </tr>
+        <div key={share["name"]}>
+          <h4>{share["name"]}</h4>
+        </div>
         
       </>
     );
@@ -118,7 +119,7 @@ const ShareCard = ({ share }) => {
   return (
     <>
       <div>
-        <h3>{populateTable()}</h3>
+        <Typography align = "center">{populateTable()}</Typography>
         <ReactHighcharts config={configPrice} />
       </div>
     </>
