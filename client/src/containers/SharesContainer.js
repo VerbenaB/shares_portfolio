@@ -2,16 +2,15 @@ import React, { useEffect, useState } from "react";
 import TotalsPanel from "../components/TotalsPanel/TotalPanel";
 import SharesTable from "../components/SharesTable/SharesTable";
 import SharesList from "../components/SharesCarousel/SharesList";
-// import ToggleAddForm from '../components/Edit/ToggleAddForm';
 import AddForm from "../components/Edit/AddForm";
 import { getShares, getTickers, postShare } from "../components/ShareService";
 import "./SharesContainer.css";
 import Grid from "@material-ui/core/Grid";
-// import ToggleDeleteForm from '../components/Edit/ToggleDeleteForm';
-// import DeleteForm from '../components/Edit/DeleteForm';
+import AddCircleIcon from '@material-ui/icons/AddCircle';
 
 const SharesContainer = () => {
   const [sharesInfo, setSharesInfo] = useState(null);
+  const [addOpen, setAddOpen] = useState(false);
 
   useEffect(() => {
     getShares().then((dbShares) => {
@@ -42,18 +41,68 @@ const SharesContainer = () => {
 
   const shareSubmit = (shareObject) => {
     postShare(shareObject);
+    setAddOpen(false);
+    window.location.reload();
   };
+
+  const handleToggleAdd = () => {
+    if (addOpen == false) {
+      setAddOpen(true);
+    } else {
+      setAddOpen(false);
+    }
+  }
+
+  if ((!sharesInfo) || sharesInfo[0]["Note"]) {
+    return <div className="dashboard"><p>Loading ...</p></div>  
+  }
+
+  if (addOpen == false) {
+    return (
+      <div className="main">
+  
+        {/* <AddForm search={searchTicker} onShareSubmit={shareSubmit} /> */}
+        
+        
+          <div className="dashboard">
+            
+            <Grid container spacing={2}>
+              <Grid item xs={6} sm={6}>
+                <TotalsPanel allInfo={sharesInfo} />
+              </Grid>
+              <Grid item xs={5}>
+                <SharesTable allInfo={sharesInfo} />
+              </Grid>
+              <Grid item xs={1}>
+              <button className="add-plus" onClick={handleToggleAdd}><AddCircleIcon fontSize="large"/></button>
+              </Grid>
+              <Grid item xs={12}>
+                <SharesList allInfo={sharesInfo} />
+              </Grid>
+            </Grid>
+          </div>
+        
+      </div>
+    );
+  }
 
   return (
     <div className="main">
+
+      <AddForm search={searchTicker} onShareSubmit={shareSubmit} />
+      
       
         <div className="dashboard">
+          
           <Grid container spacing={2}>
             <Grid item xs={6} sm={6}>
               <TotalsPanel allInfo={sharesInfo} />
             </Grid>
-            <Grid item xs={6}>
+            <Grid item xs={5}>
               <SharesTable allInfo={sharesInfo} />
+            </Grid>
+            <Grid item xs={1}>
+            <button className="add-plus" onClick={handleToggleAdd}><AddCircleIcon fontSize="large"/></button>
             </Grid>
             <Grid item xs={12}>
               <SharesList allInfo={sharesInfo} />
@@ -61,8 +110,6 @@ const SharesContainer = () => {
           </Grid>
         </div>
       
-
-      <AddForm search={searchTicker} onShareSubmit={shareSubmit} />
     </div>
   );
 };

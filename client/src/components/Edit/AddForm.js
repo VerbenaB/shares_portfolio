@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import {TextField, FormGroup} from "@material-ui/core";
-import {Button} from 'react-bootstrap';
 import "./AddForm.css";
 
 
@@ -20,7 +19,7 @@ const AddForm = ({ search, onShareSubmit}) => {
 
 
   const handleButtonClick = (e) => {
-    e.preventDefault();
+    // e.preventDefault();
 
     onShareSubmit({
       share: shareObject[0],
@@ -34,7 +33,7 @@ const AddForm = ({ search, onShareSubmit}) => {
 
   return (
     <>
-      <h2>New Share</h2>
+      
       <form onSubmit={handleButtonClick} className="form">
         
           <TextField className="form-input" type="text" label="Name" onChange={handleShareChange} />
@@ -44,22 +43,6 @@ const AddForm = ({ search, onShareSubmit}) => {
         
         <button className="add-button" onClick={handleButtonClick}>Add</button>
       </form> 
-
-      {/* <form onSubmit={handleButtonClick}>
-        <input type="text" placeholder="search" onChange={handleShareChange} />
-
-        <label htmlFor="numbers">Number of shares</label>
-        <input
-          
-          id="numbers"
-          placeholder="5"
-          onChange={handleNumberChange}
-        />
-        
-
-        <button>Add</button>
-      </form> */}
-
       
     </>
   );
