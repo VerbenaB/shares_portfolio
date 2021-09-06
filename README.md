@@ -1,10 +1,12 @@
 # Treefolio
+Treefolio is a web app to help young investors monitor their portfolio. Thanks to the highcharts the users are able to check the most recent trends of their shares and therefore make better decisions for their investments. 
+
 
 ![homepage treefolio](https://user-images.githubusercontent.com/81560858/132212875-1cab023f-71ed-49c5-8d0d-b61b2ddf5820.png)
 
 ### Running instructions:
 
-#### Server
+### Server
 Install server dependencies:
 
 cd server
@@ -12,7 +14,7 @@ npm install
 
 npm run server:dev
 
-#### Client
+### Client
 
 cd client
 npm install 
