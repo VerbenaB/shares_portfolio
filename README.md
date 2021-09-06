@@ -6,6 +6,10 @@ Treefolio is a web app to help young investors monitor their portfolio. Thanks t
 
 ### Running instructions:
 
+Clown down the repo.
+
+Navigate to wherever you stored the shares portfolio directory in your command line.
+
 ### Server
 Install server dependencies:
 
