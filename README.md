@@ -15,7 +15,6 @@ Install server dependencies:
 
 cd server
 npm install
-
 npm run server:dev
 
 ### Client
