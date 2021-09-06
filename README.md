@@ -27,5 +27,6 @@ npm install
 
 npm start
 
+N.B. : server and client need to run at the same time, so open two tabs in your terminal.
 
 
