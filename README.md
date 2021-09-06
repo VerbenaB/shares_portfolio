@@ -27,6 +27,6 @@ npm install
 
 npm start
 
-N.B. : server and client need to run at the same time, so open two tabs in your terminal.
+N.B. : open two tabs in your terminal, one for server and one for client, as the two need to run at the same time.
 
 
