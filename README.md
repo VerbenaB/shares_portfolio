@@ -14,13 +14,17 @@ Navigate to wherever you stored the shares portfolio directory in your command l
 Install server dependencies:
 
 cd server
+
 npm install
+
 npm run server:dev
 
 ### Client
 
 cd client
+
 npm install 
+
 npm start
 
 
