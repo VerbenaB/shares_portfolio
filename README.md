@@ -29,7 +29,7 @@ npm start
 
 N.B. : open two tabs in your terminal, one for server and one for client, as the two need to run at the same time.
 
-###Technologies used
+### Technologies used
 Javascript, APIs, Library(Material UI), Highcharts, MongoDB, Insomnia.
 
 
